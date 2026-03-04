@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="VehicleWebApi.Domain/VehicleWebApi.Domain.csproj" Id="4daf3e25-de3b-4c6e-8601-66ab97e40ee0" />
+  <Project Path="VehicleWebApi.Infrastructure/VehicleWebApi.Infrastructure.csproj" Id="3baee093-58ed-4430-b163-a1ed42e36399" />
   <Project Path="VehicleWebApi/VehicleWebApi.csproj" />
 </Solution>
