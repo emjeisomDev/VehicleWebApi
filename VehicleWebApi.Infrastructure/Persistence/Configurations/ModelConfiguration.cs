@@ -20,7 +20,7 @@ namespace VehicleWebApi.Infrastructure.Persistence.Configurations
                 .IsUnique();
 
             builder.HasOne(m => m.Manufacturer)
-                .WithMany()
+                .WithMany(m => m.Models)
                 .HasForeignKey(m => m.ManufacturerId)
                 .OnDelete(DeleteBehavior.Restrict);
 

@@ -18,6 +18,12 @@ namespace VehicleWebApi.Infrastructure.Persistence.Configurations
 
             builder.HasIndex(v => v.Name)
                 .IsUnique();
+
+            builder.HasData(
+                new { Id = 1, Name = "Car" },
+                new { Id = 2, Name = "Truck" },
+                new { Id = 3, Name = "Motorcycle" }
+            );
         }
     }
 }
