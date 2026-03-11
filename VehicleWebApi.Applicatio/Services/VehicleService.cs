@@ -6,7 +6,12 @@ namespace VehicleWebApi.Application.Services
 {
     public class VehicleService : IVehicleService
     {
-        public Task<int> CreateCarAsync(CreateCarDto dto)
+
+        private readonly IVehicleRepository _repository;
+
+        public VehicleService(IVehicleRepository repository) => _repository = repository;
+
+        public async Task<int> CreateCarAsync(CreateCarDto dto)
         {
             var car = new Car(
                 dto.Color,
@@ -17,10 +22,13 @@ namespace VehicleWebApi.Application.Services
                 dto.BodyTypeId
             );
 
-            return Task.FromResult(0);
+            await _repository.AddAsync(car);
+            await _repository.SaveChangesAsync();
+
+            return car.Id;
         }
 
-        public Task<int> CreateTruckAsync(CreateTruckDto dto)
+        public async Task<int> CreateTruckAsync(CreateTruckDto dto)
         {
             var truck = new Truck(
                 dto.Color,
@@ -30,10 +38,13 @@ namespace VehicleWebApi.Application.Services
                 dto.BodyTypeId
             );
 
-            return Task.FromResult(0);
+            await _repository.AddAsync(truck);
+            await _repository.SaveChangesAsync();
+
+            return truck.Id;
         }
 
-        public Task<int> CreateMotorcycleAsync(CreateMotorcycleDto dto)
+        public async Task<int> CreateMotorcycleAsync(CreateMotorcycleDto dto)
         {
             var motorcycle = new Motorcycle(
                 dto.Color,
@@ -43,7 +54,10 @@ namespace VehicleWebApi.Application.Services
                 dto.HasElectricStart
             );
 
-            return Task.FromResult(0);
+            await _repository.AddAsync(motorcycle);
+            await _repository.SaveChangesAsync();
+
+            return motorcycle.Id;
         }
     }
 }
