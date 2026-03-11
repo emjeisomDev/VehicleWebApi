@@ -1,5 +1,6 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using VehicleWebApi.JsonConverters;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using VehicleWebApi.Application.Interfaces;
@@ -15,7 +16,7 @@ builder.Services
     .AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        options.JsonSerializerOptions.Converters.Add(new HandlebarTypeJsonConverter());
         options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
     });
 
