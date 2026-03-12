@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using VehicleWebApi.Application.DTOs;
 using VehicleWebApi.Application.DTOs.EntitiesDTOs;
 using VehicleWebApi.Application.Interfaces;
 using VehicleWebApi.Domain.Entities;
@@ -52,6 +53,46 @@ namespace VehicleWebApi.Infrastructure.Repositories
                     v.ModelVersion.Model.Manufacturer.Name
                 ))
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<VehicleDto>> GetVehiclesAsync(VehicleQueryParameters query)
+        {
+            var vehicles = _context.Vehicles
+                .AsNoTracking()
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(query.Type))
+            {
+                vehicles = vehicles.Where(v =>
+                    v.VehicleType.Name.ToLower() == query.Type.ToLower());
+            }
+
+            if (!string.IsNullOrWhiteSpace(query.Manufacturer))
+            {
+                vehicles = vehicles.Where(v =>
+                    v.ModelVersion.Model.Manufacturer.Name.ToLower() ==
+                    query.Manufacturer.ToLower());
+            }
+
+            if (query.Year.HasValue)
+            {
+                vehicles = vehicles.Where(v =>
+                    v.ModelVersion.Year == query.Year.Value);
+            }
+
+            return await vehicles
+                .Select(v => new VehicleDto(
+                    v.Id,
+                    v.VehicleType.Name,
+                    v.Color,
+                    v.ModelVersionId,
+                    v.ModelVersion.Year,
+                    v.ModelVersion.Model.Name,
+                    v.ModelVersion.Model.Manufacturer.Name
+                ))
+                .Skip((query.Page - 1) * query.PageSize)
+                .Take(query.PageSize)
+                .ToListAsync();
         }
 
     }

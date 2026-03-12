@@ -1,4 +1,5 @@
-﻿using VehicleWebApi.Application.DTOs.CreatesDTOs;
+﻿using VehicleWebApi.Application.DTOs;
+using VehicleWebApi.Application.DTOs.CreatesDTOs;
 using VehicleWebApi.Application.DTOs.EntitiesDTOs;
 using VehicleWebApi.Application.Interfaces;
 using VehicleWebApi.Domain.Entities;
@@ -126,6 +127,9 @@ namespace VehicleWebApi.Application.Services
                     throw new ArgumentException("Invalid vehicle type.");
             }
         }
+
+        public async Task<IEnumerable<VehicleDto>> GetVehiclesAsync(VehicleQueryParameters query) 
+            => await _repository.GetVehiclesAsync(query);
 
 
     }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VehicleWebApi.Application.DTOs;
 using VehicleWebApi.Application.DTOs.CreatesDTOs;
 using VehicleWebApi.Application.Interfaces;
 using VehicleWebApi.Domain.Enums;
@@ -24,11 +25,17 @@ namespace VehicleWebApi.Controllers
             return Ok(vehicle);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetVehicles()
-        {
-            var vehicles = await _service.GetVehiclesAsync();
+        //[HttpGet]
+        //public async Task<IActionResult> GetVehicles()
+        //{
+        //    var vehicles = await _service.GetVehiclesAsync();
+        //    return Ok(vehicles);
+        //}
 
+        [HttpGet]
+        public async Task<IActionResult> GetVehicles([FromQuery] VehicleQueryParameters query)
+        {
+            var vehicles = await _service.GetVehiclesAsync(query);
             return Ok(vehicles);
         }
 
