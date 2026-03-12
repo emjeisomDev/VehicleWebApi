@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VehicleWebApi.Application.DTOs;
+using VehicleWebApi.Application.DTOs.CreatesDTOs;
 using VehicleWebApi.Application.Interfaces;
 
 namespace VehicleWebApi.Controllers

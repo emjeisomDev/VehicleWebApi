@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using VehicleWebApi.Application.DTOs;
+using VehicleWebApi.Application.DTOs.CreatesDTOs;
 
 namespace VehicleWebApi.Application.Validators
 {

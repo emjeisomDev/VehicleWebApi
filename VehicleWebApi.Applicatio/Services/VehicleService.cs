@@ -1,4 +1,5 @@
-﻿using VehicleWebApi.Application.DTOs;
+﻿using VehicleWebApi.Application.DTOs.CreatesDTOs;
+using VehicleWebApi.Application.DTOs.EntitiesDTOs;
 using VehicleWebApi.Application.Interfaces;
 using VehicleWebApi.Domain.Entities;
 using VehicleWebApi.Domain.Enums;
@@ -10,7 +11,14 @@ namespace VehicleWebApi.Application.Services
 
         private readonly IVehicleRepository _repository;
 
-        public VehicleService(IVehicleRepository repository) => _repository = repository;
+        public VehicleService(IVehicleRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task<IEnumerable<VehicleDto>> GetVehiclesAsync() => await _repository.GetVehiclesAsync();
+
+        public async Task<VehicleDto> GetVehicleByIdAsync(int id) => await _repository.GetVehicleByIdAsync(id);
 
         public async Task<Car> CreateCarAsync(CreateCarDto dto)
         {

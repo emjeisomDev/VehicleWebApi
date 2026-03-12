@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VehicleWebApi.Application.DTOs
+namespace VehicleWebApi.Application.DTOs.EntitiesDTOs
 {
-    public record CreateTruckDto : CreateVehicleDto
+    public record TruckDto
     {
+        public int Id { get; init; }
+        public string Color { get; init; }
         public decimal LoadCapacityInTons { get; init; }
         public int? AxlesQuantity { get; init; }
-        public int? BodyTypeId { get; init; }
+        public string BodyType { get; init; }
 
-        public CreateTruckDto(
+        public TruckDto(
+            int id,
             string color,
-            int modelVersionId,
             decimal loadCapacityInTons,
             int? axlesQuantity,
-            int? bodyTypeId
-        ) : base(color, modelVersionId)
+            string bodyType)
         {
+            Id = id;
+            Color = color;
             LoadCapacityInTons = loadCapacityInTons;
             AxlesQuantity = axlesQuantity;
-            BodyTypeId = bodyTypeId;
+            BodyType = bodyType;
         }
-
-
-
     }
 }

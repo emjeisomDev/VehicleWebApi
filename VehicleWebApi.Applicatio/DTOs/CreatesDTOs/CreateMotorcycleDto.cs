@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using VehicleWebApi.Domain.Enums;
 
-namespace VehicleWebApi.Application.DTOs
+namespace VehicleWebApi.Application.DTOs.CreatesDTOs
 {
     public record CreateMotorcycleDto : CreateVehicleDto
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VehicleWebApi.Application.DTOs
+namespace VehicleWebApi.Application.DTOs.CreatesDTOs
 {
     public record CreateCarDto : CreateVehicleDto
     {

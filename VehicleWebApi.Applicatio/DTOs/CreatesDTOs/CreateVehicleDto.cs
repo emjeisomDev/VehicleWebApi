@@ -1,4 +1,4 @@
-﻿namespace VehicleWebApi.Application.DTOs
+﻿namespace VehicleWebApi.Application.DTOs.CreatesDTOs
 {
     public record CreateVehicleDto
     {
