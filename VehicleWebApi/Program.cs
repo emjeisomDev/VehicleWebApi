@@ -2,7 +2,6 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using VehicleWebApi.JsonConverters;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json.Serialization;
 using VehicleWebApi.Application.Interfaces;
 using VehicleWebApi.Application.Services;
 using VehicleWebApi.Application.Validators;
